@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You 💖</title>
+
+<style>
+    body {
+        text-align: center;
+        font-family: Arial;
+        background: linear-gradient(to right, #ffe6f0, #fff0f5);
+        margin-top: 100px;
+        overflow: hidden;
+    }
+
+    h2 {
+        color: #cc0066;
+    }
+
+    button {
+        padding: 15px 30px;
+        font-size: 18px;
+        background-color: #ff66a3;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+
+    #message {
+        margin-top: 30px;
+        font-size: 26px;
+        color: #cc0066;
+        font-weight: bold;
+    }
+
+    .emoji {
+        position: absolute;
+        font-size: 24px;
+        animation: float 2.5s linear forwards;
+    }
+
+    @keyframes float {
+        from {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-200px);
+            opacity: 0;
+        }
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 10px;
+        right: 15px;
+        font-size: 12px;
+        color: #777;
+    }
+</style>
+</head>
+
+<body>
+
+<h2>💖 Press the button 👇</h2>
+
+<button onclick="showMessage()">hey doc, its me Ibrahem, press me 😄</button>
+
+<p id="message">Click the button 😊</p>
+
+<div class="footer">designed by me specially to you</div>
+
+<script>
+    const messages = [
+        "🦷💖 You are the best doctor ever!",
+        "😊✨ Keep your smile on, always!",
+        "💫🦷 Your pretty smile is made to make others smile, and that's a bliss!"
+    ];
+
+    const emojis = ["💖", "🦷"];
+
+    function showMessage() {
+        const msg = document.getElementById("message");
+
+        // تغيير النص مباشرة
+        msg.textContent = messages[Math.floor(Math.random() * messages.length)];
+
+        // إنشاء الإيموجي
+        for (let i = 0; i < 10; i++) {
+            const e = document.createElement("div");
+            e.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            e.className = "emoji";
+
+            e.style.left = Math.random() * window.innerWidth + "px";
+            e.style.top = "300px";
+
+            document.body.appendChild(e);
+
+            setTimeout(() => e.remove(), 2500);
+        }
+    }
+</script>
+
+</body>
+</html>
