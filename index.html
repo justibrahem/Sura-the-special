@@ -25,6 +25,12 @@
         border: none;
         border-radius: 15px;
         cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background-color: #ff3385;
+        transform: scale(1.1);
     }
 
     #message {
@@ -32,12 +38,13 @@
         font-size: 26px;
         color: #cc0066;
         font-weight: bold;
+        transition: 0.3s;
     }
 
     .emoji {
         position: absolute;
         font-size: 24px;
-        animation: float 2.5s linear forwards;
+        animation: float 3s linear forwards;
     }
 
     @keyframes float {
@@ -46,7 +53,7 @@
             opacity: 1;
         }
         to {
-            transform: translateY(-200px);
+            transform: translateY(-250px);
             opacity: 0;
         }
     }
@@ -75,19 +82,29 @@
     const messages = [
         "🦷💖 You are the best doctor ever!",
         "😊✨ Keep your smile on, always!",
-        "💫🦷 Your pretty smile is made to make others smile, and that's a bliss!"
+        "💫🦷 Your pretty smile is made to make others smile, and that's a bliss!",
+        "🌸💖 Your energy is wonderful, don't let others ruin it!",
+        "🐱✨ Maybe in another universe, we're cats... just eat, sleep, and meow 😆",
+        "🦷🐱 But for sure... you'll be a doctor cat!",
+        "💘🌟 You make everything around you brighter!",
+        "🌈💖 Stay as amazing as you are!"
     ];
 
-    const emojis = ["💖", "🦷"];
+    const emojis = ["💖","🦷","✨","🌸","🐱","💫","🌟"];
 
     function showMessage() {
         const msg = document.getElementById("message");
 
-        // تغيير النص مباشرة
         msg.textContent = messages[Math.floor(Math.random() * messages.length)];
 
-        // إنشاء الإيموجي
-        for (let i = 0; i < 10; i++) {
+        // تأثير بسيط للنص
+        msg.style.transform = "scale(1.1)";
+        setTimeout(() => {
+            msg.style.transform = "scale(1)";
+        }, 200);
+
+        // إيموجي كيوت
+        for (let i = 0; i < 12; i++) {
             const e = document.createElement("div");
             e.textContent = emojis[Math.floor(Math.random() * emojis.length)];
             e.className = "emoji";
@@ -97,7 +114,7 @@
 
             document.body.appendChild(e);
 
-            setTimeout(() => e.remove(), 2500);
+            setTimeout(() => e.remove(), 3000);
         }
     }
 </script>
