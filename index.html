@@ -58,6 +58,13 @@
         }
     }
 
+    /* خلفية إيموجي */
+    .bg-emoji {
+        position: absolute;
+        font-size: 32px;
+        opacity: 0.18;
+    }
+
     .footer {
         position: fixed;
         bottom: 10px;
@@ -78,6 +85,22 @@
 
 <div class="footer">designed by me specially to you</div>
 
+<!-- 🎀🦷💖 خلفية موزعة -->
+<div class="bg-emoji" style="top:10%; left:8%;">🎀</div>
+<div class="bg-emoji" style="top:15%; right:10%;">💖</div>
+
+<div class="bg-emoji" style="top:30%; left:5%;">🦷</div>
+<div class="bg-emoji" style="top:35%; right:8%;">🎀</div>
+
+<div class="bg-emoji" style="top:55%; left:7%;">💖</div>
+<div class="bg-emoji" style="top:60%; right:6%;">🦷</div>
+
+<div class="bg-emoji" style="bottom:25%; left:10%;">🎀</div>
+<div class="bg-emoji" style="bottom:20%; right:12%;">💖</div>
+
+<div class="bg-emoji" style="bottom:10%; left:20%;">🦷</div>
+<div class="bg-emoji" style="bottom:12%; right:18%;">🎀</div>
+
 <script>
     const messages = [
         "🦷💖 You are the best doctor ever!",
@@ -86,31 +109,29 @@
         "🌸💖 Your energy is wonderful, don't let others ruin it!",
         "🐱✨ Maybe in another universe, we're cats... just eat, sleep, and meow 😆🦷🐱 But for sure... you'll be a doctor cat!",
         "💘🌟 You make everything around you brighter!",
-               "بطاطا المجمع ازكى بكثير من بطاطا المول، بطاطا المول بتتاكلش",
-        "🌈💖 Stay as amazing as you are!"
+        "🌈💖 Stay as amazing as you are!",
+        "🍟 بطاطا المجمع ازكى من بطاطا المول"
     ];
 
-    const emojis = ["💖","🦷","✨","🌸","🐱","💫","🌟"];
+    const emojis = ["💖","🦷","✨","🌸","🐱","💫","🌟","🎀"];
 
     function showMessage() {
         const msg = document.getElementById("message");
 
         msg.textContent = messages[Math.floor(Math.random() * messages.length)];
 
-        // تأثير بسيط للنص
         msg.style.transform = "scale(1.1)";
         setTimeout(() => {
             msg.style.transform = "scale(1)";
         }, 200);
 
-        // إيموجي كيوت
         for (let i = 0; i < 12; i++) {
             const e = document.createElement("div");
             e.textContent = emojis[Math.floor(Math.random() * emojis.length)];
             e.className = "emoji";
 
             e.style.left = Math.random() * window.innerWidth + "px";
-            e.style.top = "300px";
+            e.style.top = (window.innerHeight / 2) + "px"; // ✅ ثابتة وصحيحة
 
             document.body.appendChild(e);
 
